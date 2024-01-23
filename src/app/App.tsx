@@ -1,5 +1,6 @@
 import ReactFlow, { Controls } from "reactflow";
 import 'reactflow/dist/style.css';
+const html2json = require('html2json').html2json;
 
 const initialNodes = [
     {
@@ -31,22 +32,34 @@ const initialEdges = [
 const proOptions = { hideAttribution: true };
 
 function App() {
+
+    // const onFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     console.log(html2json(e.target.files[0]))
+    // }
+
+    console.log(html2json(document.body.innerHTML))
+
+    // const json = 
+
     return (
-        <div style={{ height: '100vh', width: '100vw' }}>
-            <ReactFlow
-                nodes={initialNodes}
-                edges={initialEdges}
-                // onNodesChange={(changes: NodeChange[]) => dispatch(flowActions.onChangeNodes(changes))}
-                // onEdgesChange={(changes: EdgeChange[]) => dispatch(flowActions.onChangeEdges(changes))}
-                // onConnect={(changes: Connection) => dispatch(flowActions.onConnect(changes))}
-                // onNodesDelete={(e) => console.log(e)}
-                // fitView
-                // nodeTypes={NodeTypes}
-                proOptions={proOptions}
-            >
-                <Controls/>
-            </ReactFlow>
-        </div>
+        <>
+            {/* <input type={'file'} onChange={onFileImport}/> */}
+            <div style={{ height: '100vh', width: '100vw' }}>
+                <ReactFlow
+                    nodes={initialNodes}
+                    edges={initialEdges}
+                    // onNodesChange={(changes: NodeChange[]) => dispatch(flowActions.onChangeNodes(changes))}
+                    // onEdgesChange={(changes: EdgeChange[]) => dispatch(flowActions.onChangeEdges(changes))}
+                    // onConnect={(changes: Connection) => dispatch(flowActions.onConnect(changes))}
+                    // onNodesDelete={(e) => console.log(e)}
+                    // fitView
+                    // nodeTypes={NodeTypes}
+                    proOptions={proOptions}
+                >
+                    <Controls/>
+                </ReactFlow>
+            </div>
+        </>
     );
 }
 
